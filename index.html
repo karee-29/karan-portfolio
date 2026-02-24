@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARAN — Photographer &amp; Cinematographer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Film Grain Overlay -->
+    <canvas id="grain"></canvas>
+
+    <!-- Custom Cursor -->
+    <div class="cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-text">View</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" data-animate="nav">
+        <div class="nav-left">
+            <span class="nav-logo">K.</span>
+        </div>
+        <div class="nav-right">
+            <a href="#work" class="nav-link">Work</a>
+            <a href="#achievements" class="nav-link">Achievements</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <img src="images/hero.jpg" alt="Shalmali Kholgade live — by Karan" class="hero-bg-img">
+            <div class="hero-bg-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title" id="heroTitle">
+                <span class="hero-letter" data-letter="K">K</span>
+                <span class="hero-letter" data-letter="A">A</span>
+                <span class="hero-letter" data-letter="R">R</span>
+                <span class="hero-letter" data-letter="A">A</span>
+                <span class="hero-letter" data-letter="N">N</span>
+            </h1>
+            <div class="hero-subtitle">
+                <div class="hero-line"></div>
+                <p class="hero-tagline">Photographer &amp; Cinematographer</p>
+                <div class="hero-line"></div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </div>
+        </div>
+        <!-- Spotlight overlay -->
+        <div class="hero-spotlight" id="heroSpotlight"></div>
+    </section>
+
+    <!-- Statement Section -->
+    <section class="statement" id="statement">
+        <div class="statement-inner">
+            <p class="statement-text" data-split>
+                <span class="word">Light,</span>
+                <span class="word">shadow,</span>
+                <span class="word">and</span>
+                <span class="word">the</span>
+                <span class="word">stories</span>
+                <span class="word">they</span>
+                <span class="word">tell</span>
+                <span class="word">when</span>
+                <span class="word">nobody's</span>
+                <span class="word">watching.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- ===================== CONCERTS SECTION ===================== -->
+    <section class="gallery" id="work">
+        <div class="gallery-header">
+            <h2 class="gallery-title" data-animate="title">Concerts</h2>
+            <p class="gallery-year" data-animate="title">Live Music &amp; Stage Photography</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item gallery-item--large" data-speed="0.8" data-project="shalmali">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/concerts/karee_shalmali_kholgade-3.jpg" alt="Shalmali Kholgade" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">01</span>
+                        <h3 class="gallery-item-title">Shalmali Kholgade</h3>
+                        <span class="gallery-item-cat">Concert</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item--small" data-speed="1.2" data-project="naalayak">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/concerts/karee_naalayak--4.jpg" alt="Naalayak" class="gallery-img" loading="lazy" style="object-position: top">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">02</span>
+                        <h3 class="gallery-item-title">Naalayak</h3>
+                        <span class="gallery-item-cat">Concert</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item gallery-item--medium" data-speed="1.0" data-project="javed-ali">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/concerts/karee_javed_ali-7.jpg" alt="Javed Ali" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">03</span>
+                        <h3 class="gallery-item-title">Javed Ali</h3>
+                        <span class="gallery-item-cat">Concert</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item--tall" data-speed="0.6" data-project="rm-live">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/concerts/karee-rm-2-7.jpg" alt="Live Performance" class="gallery-img" loading="lazy" style="object-position: top">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">04</span>
+                        <h3 class="gallery-item-title">Smokescreen</h3>
+                        <span class="gallery-item-cat">Concert</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item gallery-item--wide" data-speed="0.9" data-project="shalmali-2">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/concerts/karee_shalmali_kholgade-2.jpg" alt="Shalmali Kholgade" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">05</span>
+                        <h3 class="gallery-item-title">Golden Haze</h3>
+                        <span class="gallery-item-cat">Concert</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item--small" data-speed="1.3" data-project="atlantis">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/concerts/karee-atlantis--3.jpg" alt="Atlantis" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">06</span>
+                        <h3 class="gallery-item-title">Atlantis</h3>
+                        <span class="gallery-item-cat">Concert</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== STREET SECTION ===================== -->
+    <section class="gallery gallery--alt">
+        <div class="gallery-header">
+            <h2 class="gallery-title" data-animate="title">Street</h2>
+            <p class="gallery-year" data-animate="title">Raw Stories from the Roads</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item gallery-item--medium" data-speed="1.1" data-project="patiala">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/street/karee_patiala-1.jpg" alt="Patiala" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">07</span>
+                        <h3 class="gallery-item-title">Patiala</h3>
+                        <span class="gallery-item-cat">Street</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item--tall" data-speed="0.7" data-project="street-walk">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/street/karee_street_31_01_26-5.jpg" alt="Street Walk" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">08</span>
+                        <h3 class="gallery-item-title">Nightfall</h3>
+                        <span class="gallery-item-cat">Street</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item gallery-item--wide" data-speed="0.85" data-project="old-town">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/street/karee_street_walk-1.jpg" alt="Old Town" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">09</span>
+                        <h3 class="gallery-item-title">Old Town</h3>
+                        <span class="gallery-item-cat">Street</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item--small" data-speed="1.2" data-project="hogenakkal">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/street/karee_hogenakkal-1-2.jpg" alt="Hogenakkal" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">10</span>
+                        <h3 class="gallery-item-title">Hogenakkal</h3>
+                        <span class="gallery-item-cat">Street</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== WILDLIFE & BIRDS SECTION ===================== -->
+    <section class="gallery">
+        <div class="gallery-header">
+            <h2 class="gallery-title" data-animate="title">Wildlife &amp; Birds</h2>
+            <p class="gallery-year" data-animate="title">Nature Through the Lens</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item gallery-item--large" data-speed="0.8" data-project="husky">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/wildlife/karee_manali_final-6-3.jpg" alt="Husky in Manali" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">11</span>
+                        <h3 class="gallery-item-title">Blue Eyes</h3>
+                        <span class="gallery-item-cat">Wildlife</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item--small" data-speed="1.3" data-project="illusion">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/birds/karee_illusion-1.jpg" alt="Bird — Illusion" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">12</span>
+                        <h3 class="gallery-item-title">Illusion</h3>
+                        <span class="gallery-item-cat">Birds</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item gallery-item--medium" data-speed="1.0" data-project="life-cycle">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/wildlife/karee_monkey_life_cycle-4.jpg" alt="Monkey Life Cycle" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">13</span>
+                        <h3 class="gallery-item-title">Life Cycle</h3>
+                        <span class="gallery-item-cat">Wildlife</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item--tall" data-speed="0.6" data-project="vedanthangal">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/birds/karee_vedanthangal-14-2.jpg" alt="Owl — Vedanthangal" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">14</span>
+                        <h3 class="gallery-item-title">Sentinel</h3>
+                        <span class="gallery-item-cat">Birds</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item gallery-item--wide" data-speed="0.9" data-project="hogenakkal-bird">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/birds/karee_hogenakkal-1-6.jpg" alt="Bird in Flight" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">15</span>
+                        <h3 class="gallery-item-title">Hogenakkal</h3>
+                        <span class="gallery-item-cat">Birds</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item--small" data-speed="1.1" data-project="manali-wild">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/wildlife/karee_manali_final-7-2.jpg" alt="Manali Wildlife" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">16</span>
+                        <h3 class="gallery-item-title">Manali</h3>
+                        <span class="gallery-item-cat">Wildlife</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== EVENTS SECTION ===================== -->
+    <section class="gallery gallery--alt">
+        <div class="gallery-header">
+            <h2 class="gallery-title" data-animate="title">Events</h2>
+            <p class="gallery-year" data-animate="title">Culture, Festivals &amp; Performances</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item gallery-item--large" data-speed="0.75" data-project="virsa">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/events/karee_virsa-2.jpg" alt="Virsa" class="gallery-img" loading="lazy" style="object-position: top">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">17</span>
+                        <h3 class="gallery-item-title">Virsa</h3>
+                        <span class="gallery-item-cat">Cultural Event</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item--small" data-speed="1.2" data-project="battle-bands">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/events/karee_sat_battle_of_bands-122.jpg" alt="Battle of the Bands" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">18</span>
+                        <h3 class="gallery-item-title">Battle of Bands</h3>
+                        <span class="gallery-item-cat">Event</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item gallery-item--medium" data-speed="0.9" data-project="sat-walk">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/events/karee_sat_walk-52.jpg" alt="SAT Walk" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">19</span>
+                        <h3 class="gallery-item-title">Campus Walk</h3>
+                        <span class="gallery-item-cat">Event</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item--tall" data-speed="0.65" data-project="sat-walk-2">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/events/karee_sat_walk-64.jpg" alt="SAT Walk" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">20</span>
+                        <h3 class="gallery-item-title">Golden Walk</h3>
+                        <span class="gallery-item-cat">Event</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== MISCELLANEOUS SECTION ===================== -->
+    <section class="gallery">
+        <div class="gallery-header">
+            <h2 class="gallery-title" data-animate="title">Miscellaneous</h2>
+            <p class="gallery-year" data-animate="title">Everything in Between</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item gallery-item--medium" data-speed="1.0" data-project="victoria">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/misc/karee_victoria-.jpg" alt="Victoria Station Clock" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">21</span>
+                        <h3 class="gallery-item-title">Victoria</h3>
+                        <span class="gallery-item-cat">Miscellaneous</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item--tall" data-speed="0.7" data-project="manali-misc">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/misc/karee_manali_final-3-2.jpg" alt="Manali" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">22</span>
+                        <h3 class="gallery-item-title">Manali</h3>
+                        <span class="gallery-item-cat">Landscape</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item gallery-item--wide" data-speed="0.85" data-project="abstract">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/misc/karee_0053.jpg" alt="Abstract" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">23</span>
+                        <h3 class="gallery-item-title">Fragments</h3>
+                        <span class="gallery-item-cat">Abstract</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item--small" data-speed="1.2" data-project="misc-2">
+                <div class="gallery-item-inner">
+                    <div class="gallery-img-wrap">
+                        <img src="images/misc/karee_0114.jpg" alt="Misc" class="gallery-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-info">
+                        <span class="gallery-item-number">24</span>
+                        <h3 class="gallery-item-title">Still Life</h3>
+                        <span class="gallery-item-cat">Miscellaneous</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== ACHIEVEMENTS SECTION ===================== -->
+    <section class="achievements" id="achievements">
+        <div class="achievements-header">
+            <h2 class="gallery-title" data-animate="title">Achievements</h2>
+            <p class="gallery-year" data-animate="title">Recognition &amp; Milestones</p>
+        </div>
+        <div class="achievement-showcase">
+            <div class="achievement-certificate" data-animate="fade">
+                <img src="images/ifp_certificate.jpg" alt="IFP Season 15 — 50 Hour Filmmaking Challenge Certificate" loading="lazy">
+            </div>
+            <div class="achievement-details" data-animate="fade">
+                <span class="achievement-badge">Nomination</span>
+                <h3 class="achievement-title">50 Hour Filmmaking Challenge</h3>
+                <div class="achievement-divider"></div>
+                <p class="achievement-desc">Nominated at <strong>IFP Season 15</strong> for the short film <em>'HAATH SAAF'</em> in the Amateur Filmmaking Category.</p>
+                <p class="achievement-meta">Team_karm &bull; Indian Film Project &bull; Season 15</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-inner">
+            <div class="about-image-col" data-speed="0.85">
+                <div class="about-image-wrap">
+                    <img src="images/about_portrait.jpg" alt="Karan Kumar S" class="about-image" loading="lazy">
+                </div>
+            </div>
+            <div class="about-text-col">
+                <span class="about-label" data-animate="title">About</span>
+                <h2 class="about-heading" data-animate="title">The eye<br>behind the<br>lens.</h2>
+                <p class="about-description" data-animate="fade">
+                    Karan Kumar S is a photographer and cinematographer currently studying at
+                    Thapar Institute of Engineering and Technology. With a Nikon D3300 in hand
+                    and an obsession for chasing light, his work spans concert photography,
+                    street stories, wildlife encounters, and cinematic visuals.
+                </p>
+                <p class="about-description" data-animate="fade">
+                    As a core photographer for URJA 2025 and TFF 2025, and a member of the
+                    Fine Arts &amp; Photography Society, Karan has covered artists like
+                    Javed Ali, Shalmali Kholgade, and Naalayak — turning fleeting stage moments
+                    into permanent visual memories.
+                </p>
+                <div class="about-stats" data-animate="fade">
+                    <div class="stat">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Genres</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Events Covered</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Cinematography Projects</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <h2 class="contact-heading" data-animate="title">Let's create<br>something<br><em>unforgettable.</em></h2>
+            <a href="mailto:thisiskaree@gmail.com" class="contact-email" data-animate="fade">thisiskaree@gmail.com</a>
+            <div class="contact-socials" data-animate="fade">
+                <a href="https://www.instagram.com/brownbettyy" target="_blank" rel="noopener" class="social-link">Instagram</a>
+                <a href="https://www.linkedin.com/in/karan-kumar-s" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
+            </div>
+        </div>
+        <footer class="footer">
+            <span>&copy; 2026 Karan Kumar S. All rights reserved.</span>
+            <span>@brownbettyy</span>
+        </footer>
+    </section>
+
+    <!-- Project Viewer (Fullscreen overlay) -->
+    <div class="project-viewer" id="projectViewer">
+        <div class="project-viewer-bg"></div>
+        <div class="project-viewer-content">
+            <button class="project-close" id="projectClose">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="8" y1="8" x2="24" y2="24"/>
+                    <line x1="24" y1="8" x2="8" y2="24"/>
+                </svg>
+            </button>
+            <div class="project-image-full">
+                <img src="" alt="" id="projectImage">
+            </div>
+            <div class="project-details">
+                <h2 class="project-title" id="projectTitle"></h2>
+                <p class="project-category" id="projectCategory"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-text">KARAN</div>
+            <div class="preloader-bar">
+                <div class="preloader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
