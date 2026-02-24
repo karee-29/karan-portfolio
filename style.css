@@ -1048,16 +1048,78 @@ img {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
+
+    .achievement-showcase {
+        gap: 3rem;
+    }
 }
 
 @media (max-width: 768px) {
+    /* Nav */
     .nav {
-        padding: 1.5rem 2rem;
+        padding: 1rem 1.25rem;
+    }
+
+    .nav-logo {
+        font-size: 1.4rem;
+    }
+
+    .nav-right {
+        gap: 1.2rem;
+    }
+
+    .nav-link {
+        font-size: 0.6rem;
+        letter-spacing: 0.12em;
+    }
+
+    /* Hero */
+    .hero-title {
+        font-size: clamp(3.5rem, 16vw, 6rem);
+    }
+
+    .hero-subtitle {
+        gap: 0.8rem;
+        margin-top: 1.2rem;
+    }
+
+    .hero-tagline {
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+    }
+
+    .hero-line {
+        width: 30px;
+    }
+
+    /* Statement */
+    .statement {
+        padding: 4rem 1.5rem;
+        min-height: 50vh;
+    }
+
+    .statement-text {
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
+    }
+
+    /* Gallery */
+    .gallery {
+        padding: 4rem 0 3rem;
+    }
+
+    .gallery-header {
+        margin-bottom: 3rem;
+        padding: 0 1.5rem;
+    }
+
+    .gallery-title {
+        font-size: clamp(1.6rem, 7vw, 2.5rem);
     }
 
     .gallery-grid {
         grid-template-columns: 1fr;
         padding: 0 1.5rem;
+        gap: 1.25rem;
     }
 
     .gallery-item--large,
@@ -1066,17 +1128,118 @@ img {
     .gallery-item--tall,
     .gallery-item--wide {
         grid-column: span 1;
-        height: 300px;
+        height: 280px;
     }
 
+    .gallery-item--wide + .gallery-item--small {
+        grid-column: span 1;
+        margin-top: 0;
+    }
+
+    .gallery-item-info {
+        opacity: 1;
+        transform: translateY(0);
+        padding: 1.25rem;
+    }
+
+    .gallery-item-title {
+        font-size: 1.2rem;
+    }
+
+    /* Achievements */
+    .achievements {
+        padding: 4rem 1.5rem;
+        min-height: auto;
+    }
+
+    .achievements-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .achievement-showcase {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .achievement-certificate img {
+        max-width: 100%;
+    }
+
+    .achievement-title {
+        font-size: 1.8rem;
+    }
+
+    .achievement-desc {
+        font-size: 0.85rem;
+    }
+
+    .achievement-meta {
+        font-size: 0.65rem;
+    }
+
+    /* About */
     .about {
-        padding: 5rem 2rem;
+        padding: 4rem 1.5rem;
     }
 
+    .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .about-heading {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .about-description {
+        font-size: 0.85rem;
+    }
+
+    .about-stats {
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    /* Contact */
     .contact {
-        padding: 5rem 2rem;
+        padding: 4rem 1.5rem;
+        min-height: auto;
     }
 
+    .contact-heading {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+
+    .contact-email {
+        font-size: 0.9rem;
+    }
+
+    .contact-socials {
+        gap: 1.5rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 0 1.5rem;
+        position: relative;
+        margin-top: 3rem;
+        bottom: auto;
+    }
+
+    /* Project Viewer */
+    .project-viewer-content {
+        width: 95%;
+    }
+
+    .project-title {
+        font-size: 1.8rem;
+    }
+
+    /* Cursor — disable on touch */
     .cursor {
         display: none;
     }
@@ -1086,4 +1249,5 @@ img {
     }
 
     a { cursor: pointer; }
+    .gallery-item { cursor: pointer; }
 }
