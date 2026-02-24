@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KARAN — Photographer &amp; Cinematographer</title>
+    <meta name="description" content="Karan Kumar S — Photographer & Cinematographer. Concert photography, street stories, wildlife, and cinematic visuals.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="KARAN — Photographer & Cinematographer">
+    <meta property="og:description" content="Concert photography, street stories, wildlife encounters, and cinematic visuals by Karan Kumar S.">
+    <meta property="og:image" content="images/hero.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KARAN — Photographer & Cinematographer">
+    <meta name="twitter:description" content="Concert photography, street stories, wildlife encounters, and cinematic visuals by Karan Kumar S.">
+    <meta name="twitter:image" content="images/hero.jpg">
+
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +40,11 @@
         <div class="nav-left">
             <span class="nav-logo">K.</span>
         </div>
-        <div class="nav-right">
+        <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-right" id="navMenu">
             <a href="#work" class="nav-link">Work</a>
             <a href="#achievements" class="nav-link">Achievements</a>
             <a href="#about" class="nav-link">About</a>
@@ -93,7 +112,7 @@
             <div class="gallery-item gallery-item--large" data-speed="0.8" data-project="shalmali">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/concerts/karee_shalmali_kholgade-3.jpg" alt="Shalmali Kholgade" class="gallery-img" loading="lazy">
+                        <img src="images/concerts/karee_shalmali_kholgade-3.jpg" alt="Shalmali Kholgade" srcset="images/concerts/sm/karee_shalmali_kholgade-3.jpg 640w, images/concerts/karee_shalmali_kholgade-3.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">01</span>
@@ -105,7 +124,7 @@
             <div class="gallery-item gallery-item--small" data-speed="1.2" data-project="naalayak">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/concerts/karee_naalayak--4.jpg" alt="Naalayak" class="gallery-img" loading="lazy" style="object-position: top">
+                        <img src="images/concerts/karee_naalayak--4.jpg" alt="Naalayak" srcset="images/concerts/sm/karee_naalayak--4.jpg 640w, images/concerts/karee_naalayak--4.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy" style="object-position: top">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">02</span>
@@ -118,7 +137,7 @@
             <div class="gallery-item gallery-item--medium" data-speed="1.0" data-project="javed-ali">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/concerts/karee_javed_ali-7.jpg" alt="Javed Ali" class="gallery-img" loading="lazy">
+                        <img src="images/concerts/karee_javed_ali-7.jpg" alt="Javed Ali" srcset="images/concerts/sm/karee_javed_ali-7.jpg 640w, images/concerts/karee_javed_ali-7.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">03</span>
@@ -130,7 +149,7 @@
             <div class="gallery-item gallery-item--tall" data-speed="0.6" data-project="rm-live">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/concerts/karee-rm-2-7.jpg" alt="Live Performance" class="gallery-img" loading="lazy" style="object-position: top">
+                        <img src="images/concerts/karee-rm-2-7.jpg" alt="Live Performance" srcset="images/concerts/sm/karee-rm-2-7.jpg 640w, images/concerts/karee-rm-2-7.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy" style="object-position: top">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">04</span>
@@ -143,7 +162,7 @@
             <div class="gallery-item gallery-item--wide" data-speed="0.9" data-project="shalmali-2">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/concerts/karee_shalmali_kholgade-2.jpg" alt="Shalmali Kholgade" class="gallery-img" loading="lazy">
+                        <img src="images/concerts/karee_shalmali_kholgade-2.jpg" alt="Shalmali Kholgade" srcset="images/concerts/sm/karee_shalmali_kholgade-2.jpg 640w, images/concerts/karee_shalmali_kholgade-2.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">05</span>
@@ -155,7 +174,7 @@
             <div class="gallery-item gallery-item--small" data-speed="1.3" data-project="atlantis">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/concerts/karee-atlantis--3.jpg" alt="Atlantis" class="gallery-img" loading="lazy">
+                        <img src="images/concerts/karee-atlantis--3.jpg" alt="Atlantis" srcset="images/concerts/sm/karee-atlantis--3.jpg 640w, images/concerts/karee-atlantis--3.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">06</span>
@@ -177,7 +196,7 @@
             <div class="gallery-item gallery-item--medium" data-speed="1.1" data-project="patiala">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/street/karee_patiala-1.jpg" alt="Patiala" class="gallery-img" loading="lazy">
+                        <img src="images/street/karee_patiala-1.jpg" alt="Patiala" srcset="images/street/sm/karee_patiala-1.jpg 640w, images/street/karee_patiala-1.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">07</span>
@@ -189,7 +208,7 @@
             <div class="gallery-item gallery-item--tall" data-speed="0.7" data-project="street-walk">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/street/karee_street_31_01_26-5.jpg" alt="Street Walk" class="gallery-img" loading="lazy">
+                        <img src="images/street/karee_street_31_01_26-5.jpg" alt="Street Walk" srcset="images/street/sm/karee_street_31_01_26-5.jpg 640w, images/street/karee_street_31_01_26-5.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">08</span>
@@ -202,7 +221,7 @@
             <div class="gallery-item gallery-item--wide" data-speed="0.85" data-project="old-town">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/street/karee_street_walk-1.jpg" alt="Old Town" class="gallery-img" loading="lazy">
+                        <img src="images/street/karee_street_walk-1.jpg" alt="Old Town" srcset="images/street/sm/karee_street_walk-1.jpg 640w, images/street/karee_street_walk-1.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">09</span>
@@ -214,7 +233,7 @@
             <div class="gallery-item gallery-item--small" data-speed="1.2" data-project="hogenakkal">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/street/karee_hogenakkal-1-2.jpg" alt="Hogenakkal" class="gallery-img" loading="lazy">
+                        <img src="images/street/karee_hogenakkal-1-2.jpg" alt="Hogenakkal" srcset="images/street/sm/karee_hogenakkal-1-2.jpg 640w, images/street/karee_hogenakkal-1-2.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">10</span>
@@ -236,7 +255,7 @@
             <div class="gallery-item gallery-item--large" data-speed="0.8" data-project="husky">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/wildlife/karee_manali_final-6-3.jpg" alt="Husky in Manali" class="gallery-img" loading="lazy">
+                        <img src="images/wildlife/karee_manali_final-6-3.jpg" alt="Husky in Manali" srcset="images/wildlife/sm/karee_manali_final-6-3.jpg 640w, images/wildlife/karee_manali_final-6-3.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">11</span>
@@ -248,7 +267,7 @@
             <div class="gallery-item gallery-item--small" data-speed="1.3" data-project="illusion">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/birds/karee_illusion-1.jpg" alt="Bird — Illusion" class="gallery-img" loading="lazy">
+                        <img src="images/birds/karee_illusion-1.jpg" alt="Bird — Illusion" srcset="images/birds/sm/karee_illusion-1.jpg 640w, images/birds/karee_illusion-1.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">12</span>
@@ -261,7 +280,7 @@
             <div class="gallery-item gallery-item--medium" data-speed="1.0" data-project="life-cycle">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/wildlife/karee_monkey_life_cycle-4.jpg" alt="Monkey Life Cycle" class="gallery-img" loading="lazy">
+                        <img src="images/wildlife/karee_monkey_life_cycle-4.jpg" alt="Monkey Life Cycle" srcset="images/wildlife/sm/karee_monkey_life_cycle-4.jpg 640w, images/wildlife/karee_monkey_life_cycle-4.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">13</span>
@@ -273,7 +292,7 @@
             <div class="gallery-item gallery-item--tall" data-speed="0.6" data-project="vedanthangal">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/birds/karee_vedanthangal-14-2.jpg" alt="Owl — Vedanthangal" class="gallery-img" loading="lazy">
+                        <img src="images/birds/karee_vedanthangal-14-2.jpg" alt="Owl — Vedanthangal" srcset="images/birds/sm/karee_vedanthangal-14-2.jpg 640w, images/birds/karee_vedanthangal-14-2.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">14</span>
@@ -286,7 +305,7 @@
             <div class="gallery-item gallery-item--wide" data-speed="0.9" data-project="hogenakkal-bird">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/birds/karee_hogenakkal-1-6.jpg" alt="Bird in Flight" class="gallery-img" loading="lazy">
+                        <img src="images/birds/karee_hogenakkal-1-6.jpg" alt="Bird in Flight" srcset="images/birds/sm/karee_hogenakkal-1-6.jpg 640w, images/birds/karee_hogenakkal-1-6.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">15</span>
@@ -298,7 +317,7 @@
             <div class="gallery-item gallery-item--small" data-speed="1.1" data-project="manali-wild">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/wildlife/karee_manali_final-7-2.jpg" alt="Manali Wildlife" class="gallery-img" loading="lazy">
+                        <img src="images/wildlife/karee_manali_final-7-2.jpg" alt="Manali Wildlife" srcset="images/wildlife/sm/karee_manali_final-7-2.jpg 640w, images/wildlife/karee_manali_final-7-2.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">16</span>
@@ -320,7 +339,7 @@
             <div class="gallery-item gallery-item--large" data-speed="0.75" data-project="virsa">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/events/karee_virsa-2.jpg" alt="Virsa" class="gallery-img" loading="lazy" style="object-position: top">
+                        <img src="images/events/karee_virsa-2.jpg" alt="Virsa" srcset="images/events/sm/karee_virsa-2.jpg 640w, images/events/karee_virsa-2.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy" style="object-position: top">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">17</span>
@@ -332,7 +351,7 @@
             <div class="gallery-item gallery-item--small" data-speed="1.2" data-project="battle-bands">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/events/karee_sat_battle_of_bands-122.jpg" alt="Battle of the Bands" class="gallery-img" loading="lazy">
+                        <img src="images/events/karee_sat_battle_of_bands-122.jpg" alt="Battle of the Bands" srcset="images/events/sm/karee_sat_battle_of_bands-122.jpg 640w, images/events/karee_sat_battle_of_bands-122.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">18</span>
@@ -345,7 +364,7 @@
             <div class="gallery-item gallery-item--medium" data-speed="0.9" data-project="sat-walk">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/events/karee_sat_walk-52.jpg" alt="SAT Walk" class="gallery-img" loading="lazy">
+                        <img src="images/events/karee_sat_walk-52.jpg" alt="SAT Walk" srcset="images/events/sm/karee_sat_walk-52.jpg 640w, images/events/karee_sat_walk-52.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">19</span>
@@ -357,7 +376,7 @@
             <div class="gallery-item gallery-item--tall" data-speed="0.65" data-project="sat-walk-2">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/events/karee_sat_walk-64.jpg" alt="SAT Walk" class="gallery-img" loading="lazy">
+                        <img src="images/events/karee_sat_walk-64.jpg" alt="SAT Walk" srcset="images/events/sm/karee_sat_walk-64.jpg 640w, images/events/karee_sat_walk-64.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">20</span>
@@ -379,7 +398,7 @@
             <div class="gallery-item gallery-item--medium" data-speed="1.0" data-project="victoria">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/misc/karee_victoria-.jpg" alt="Victoria Station Clock" class="gallery-img" loading="lazy">
+                        <img src="images/misc/karee_victoria-.jpg" alt="Victoria Station Clock" srcset="images/misc/sm/karee_victoria-.jpg 640w, images/misc/karee_victoria-.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">21</span>
@@ -391,7 +410,7 @@
             <div class="gallery-item gallery-item--tall" data-speed="0.7" data-project="manali-misc">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/misc/karee_manali_final-3-2.jpg" alt="Manali" class="gallery-img" loading="lazy">
+                        <img src="images/misc/karee_manali_final-3-2.jpg" alt="Manali" srcset="images/misc/sm/karee_manali_final-3-2.jpg 640w, images/misc/karee_manali_final-3-2.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">22</span>
@@ -404,7 +423,7 @@
             <div class="gallery-item gallery-item--wide" data-speed="0.85" data-project="abstract">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/misc/karee_0053.jpg" alt="Abstract" class="gallery-img" loading="lazy">
+                        <img src="images/misc/karee_0053.jpg" alt="Abstract" srcset="images/misc/sm/karee_0053.jpg 640w, images/misc/karee_0053.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">23</span>
@@ -416,7 +435,7 @@
             <div class="gallery-item gallery-item--small" data-speed="1.2" data-project="misc-2">
                 <div class="gallery-item-inner">
                     <div class="gallery-img-wrap">
-                        <img src="images/misc/karee_0114.jpg" alt="Misc" class="gallery-img" loading="lazy">
+                        <img src="images/misc/karee_0114.jpg" alt="Misc" srcset="images/misc/sm/karee_0114.jpg 640w, images/misc/karee_0114.jpg 1280w" sizes="(max-width: 768px) 100vw, 50vw" class="gallery-img" loading="lazy">
                     </div>
                     <div class="gallery-item-info">
                         <span class="gallery-item-number">24</span>

@@ -437,7 +437,23 @@
             }
         });
 
-        // --- Achievements section ---
+        // --- Achievements section title ---
+        const achTitle = document.querySelector('.achievements .gallery-title');
+        const achYear = document.querySelector('.achievements .gallery-year');
+        if (achTitle) {
+            gsap.to(achTitle, {
+                opacity: 1, y: 0, duration: 1.2, ease: 'power3.out',
+                scrollTrigger: { trigger: '.achievements-header', start: 'top 75%' }
+            });
+        }
+        if (achYear) {
+            gsap.to(achYear, {
+                opacity: 1, y: 0, duration: 1, delay: 0.2, ease: 'power3.out',
+                scrollTrigger: { trigger: '.achievements-header', start: 'top 75%' }
+            });
+        }
+
+        // --- Achievements section content ---
         gsap.to('.achievement-certificate', {
             opacity: 1,
             y: 0,
@@ -710,7 +726,36 @@
     }
 
     // ========================================
-    // 13. SMOOTH ANCHOR SCROLL
+    // 13. HAMBURGER MENU (Mobile)
+    // ========================================
+    function initHamburger() {
+        const hamburger = document.getElementById('navHamburger');
+        const menu = document.getElementById('navMenu');
+        if (!hamburger || !menu) return;
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('is-active');
+            menu.classList.toggle('is-open');
+
+            if (menu.classList.contains('is-open')) {
+                if (lenis) lenis.stop();
+            } else {
+                if (lenis) lenis.start();
+            }
+        });
+
+        // Close menu when a link is tapped
+        menu.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('is-active');
+                menu.classList.remove('is-open');
+                if (lenis) lenis.start();
+            });
+        });
+    }
+
+    // ========================================
+    // 14. SMOOTH ANCHOR SCROLL
     // ========================================
     function initAnchorScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -739,6 +784,7 @@
         initMagneticCursor();
         initHeroParallax();
         initAnchorScroll();
+        initHamburger();
         initPreloader();
     }
 
