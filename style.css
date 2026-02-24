@@ -1096,6 +1096,7 @@ img {
     /* Nav */
     .nav {
         padding: 1rem 1.25rem;
+        mix-blend-mode: normal;
     }
 
     .nav-logo {
@@ -1109,9 +1110,10 @@ img {
     .nav-right {
         position: fixed;
         top: 0;
-        right: 0;
+        left: 0;
         width: 100%;
         height: 100vh;
+        height: 100dvh;
         background: rgba(10, 10, 11, 0.97);
         backdrop-filter: blur(20px);
         flex-direction: column;
@@ -1122,7 +1124,7 @@ img {
         pointer-events: none;
         transform: translateY(-20px);
         transition: opacity 0.4s ease, transform 0.4s ease;
-        mix-blend-mode: normal;
+        z-index: 99;
     }
 
     .nav-right.is-open {
