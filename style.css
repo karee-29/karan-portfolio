@@ -761,6 +761,16 @@ img {
     transform: translateY(30px);
 }
 
+.about-signature {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--accent);
+    margin-top: 0.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
 .about-stats {
     display: flex;
     gap: 3rem;

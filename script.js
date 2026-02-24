@@ -414,6 +414,17 @@
             }
         });
 
+        gsap.to('.about-signature', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.about-text-col',
+                start: 'top 50%',
+            }
+        });
+
         gsap.to('.about-stats', {
             opacity: 1,
             y: 0,
