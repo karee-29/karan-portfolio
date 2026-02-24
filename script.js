@@ -774,7 +774,12 @@
                 e.preventDefault();
                 const target = document.querySelector(anchor.getAttribute('href'));
                 if (target && lenis) {
-                    lenis.scrollTo(target, { offset: -50, duration: 2 });
+                    // Ensure lenis is running before scrolling
+                    lenis.start();
+                    // Small delay to let menu close and lenis resume
+                    setTimeout(() => {
+                        lenis.scrollTo(target, { offset: -50, duration: 2 });
+                    }, 100);
                 }
             });
         });
