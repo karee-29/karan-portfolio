@@ -113,9 +113,9 @@
             duration: 1.2,
             stagger: 0.12,
         })
-        // Background bleeds in (double exposure)
+        // Change 8: opacity raised from 0.5 to 0.75 — richer background bleed
         .to(dom.heroBg, {
-            opacity: 0.5,
+            opacity: 0.75,
             scale: 1,
             duration: 2.5,
             ease: 'power2.out',
@@ -151,69 +151,80 @@
     }
 
     // ========================================
-    // 3. FILM GRAIN
+    // 3. LIGHTWEIGHT FILM GRAIN
     // ========================================
+    // Change 1: disabled on mobile, much lighter scatter rendering
     function initGrain() {
+
+        // Disable grain on mobile
+        if (window.innerWidth < 768) {
+            dom.grain.style.display = 'none';
+            return;
+        }
+
         const canvas = dom.grain;
         const ctx = canvas.getContext('2d');
-        let frame = 0;
 
         function resize() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
 
-        function renderGrain() {
-            const w = canvas.width;
-            const h = canvas.height;
-            const imageData = ctx.createImageData(w, h);
-            const data = imageData.data;
+        resize();
+        window.addEventListener('resize', resize);
 
-            for (let i = 0; i < data.length; i += 4) {
-                const v = Math.random() * 255;
-                data[i] = v;
-                data[i + 1] = v;
-                data[i + 2] = v;
-                data[i + 3] = 255;
+        // Much lighter grain — scatter dots instead of full pixel fill
+        function render() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < 5000; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const alpha = Math.random() * 0.05;
+                ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+                ctx.fillRect(x, y, 1, 1);
             }
 
-            ctx.putImageData(imageData, 0, 0);
-            frame++;
-
-            // Render at ~12fps for that analog feel
-            setTimeout(() => requestAnimationFrame(renderGrain), 80);
+            requestAnimationFrame(render);
         }
 
-        window.addEventListener('resize', resize);
-        resize();
-        renderGrain();
+        render();
     }
 
     // ========================================
     // 4. CUSTOM CURSOR
     // ========================================
+    // Change 2: disabled on mobile, GSAP-driven instead of manual RAF loop
     function initCursor() {
-        document.addEventListener('mousemove', (e) => {
-            state.mouse.x = e.clientX;
-            state.mouse.y = e.clientY;
-        });
 
-        // Smooth cursor follow
-        function updateCursor() {
-            const dx = state.mouse.x - state.cursor.x;
-            const dy = state.mouse.y - state.cursor.y;
-
-            state.cursor.x += dx * 0.15;
-            state.cursor.y += dy * 0.15;
-
-            dom.cursorDot.style.transform = `translate(${state.mouse.x}px, ${state.mouse.y}px) translate(-50%, -50%)`;
-            dom.cursorCircle.style.transform = `translate(${state.cursor.x}px, ${state.cursor.y}px) translate(-50%, -50%)`;
-            dom.cursor.querySelector('.cursor-text').style.transform = `translate(${state.cursor.x}px, ${state.cursor.y}px) translate(-50%, -50%)`;
-
-            requestAnimationFrame(updateCursor);
+        // Disable on mobile
+        if (window.innerWidth < 768) {
+            if (dom.cursor) {
+                dom.cursor.style.display = 'none';
+            }
+            return;
         }
 
-        updateCursor();
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(dom.cursorDot, {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.1,
+            });
+
+            gsap.to(dom.cursorCircle, {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.3,
+                ease: 'power3.out',
+            });
+
+            gsap.to('.cursor-text', {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.25,
+            });
+        });
 
         // Hover states
         document.querySelectorAll('a, button').forEach(el => {
@@ -224,7 +235,6 @@
         dom.galleryItems.forEach(item => {
             item.addEventListener('mouseenter', () => {
                 dom.cursor.classList.add('cursor--gallery');
-                dom.cursor.classList.remove('cursor--hover');
             });
             item.addEventListener('mouseleave', () => {
                 dom.cursor.classList.remove('cursor--gallery');
@@ -281,20 +291,13 @@
             smoothWheel: true,
         });
 
-        // Track scroll velocity
-        let lastScroll = 0;
+        // Change 6: removed unused `let lastScroll = 0`
         lenis.on('scroll', (e) => {
             state.scrollVelocity = e.velocity;
             ScrollTrigger.update();
         });
 
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
-        // Sync GSAP ScrollTrigger with Lenis
+        // Change 6: single Lenis tick via gsap.ticker only — removes double-tick bug
         gsap.ticker.add((time) => {
             lenis.raf(time * 1000);
         });
@@ -541,15 +544,15 @@
     // ========================================
     // 8. SCROLL VELOCITY SKEW
     // ========================================
+    // Change 7: removed unused `const blur` calculation
     function initScrollSkew() {
         function updateSkew() {
             const velocity = state.scrollVelocity;
             const skew = Math.max(-5, Math.min(5, velocity * 0.3));
-            const blur = Math.min(3, Math.abs(velocity) * 0.05);
 
             dom.galleryItems.forEach(item => {
-                // Skew disabled to prevent image wiggle on scroll
-                item.style.transform = '';
+                // Skew disabled — clearing transform here would fight GSAP parallax
+                // Left intentionally as a no-op stub
             });
 
             requestAnimationFrame(updateSkew);
@@ -564,6 +567,7 @@
     function initGalleryHover() {
         dom.galleryItems.forEach(item => {
             const parentGrid = item.closest('.gallery-grid');
+
             item.addEventListener('mouseenter', () => {
                 parentGrid.classList.add('is-hovering');
             });
@@ -575,27 +579,34 @@
     }
 
     // ========================================
-    // 10. PROJECT VIEWER (Fluid Transition)
+    // 10. PROJECT VIEWER (Improved Fullscreen)
     // ========================================
+    // Change 3: better sizing (94vw/88vh), fixed object-position, rounded corners
     function initProjectViewer() {
+
         dom.galleryItems.forEach(item => {
+
             item.addEventListener('click', () => {
+
                 if (state.isProjectOpen) return;
+
                 state.isProjectOpen = true;
 
                 const img = item.querySelector('.gallery-img');
                 const title = item.querySelector('.gallery-item-title').textContent;
                 const category = item.querySelector('.gallery-item-cat').textContent;
 
-                // Get source image position for animation origin
                 const rect = img.getBoundingClientRect();
 
                 dom.projectImage.src = img.src;
                 dom.projectTitle.textContent = title;
                 dom.projectCategory.textContent = category;
 
-                // Create a clone for the fly-out animation
+                // Prevent weird crops in fullscreen
+                dom.projectImage.style.objectPosition = 'center';
+
                 const clone = img.cloneNode(true);
+
                 clone.style.cssText = `
                     position: fixed;
                     top: ${rect.top}px;
@@ -604,32 +615,30 @@
                     height: ${rect.height}px;
                     z-index: 1001;
                     object-fit: cover;
-                    border-radius: 4px;
-                    transition: none;
+                    border-radius: 10px;
                     pointer-events: none;
                 `;
+
                 document.body.appendChild(clone);
 
-                // Animate clone to fullscreen
                 gsap.to(clone, {
-                    top: '5vh',
-                    left: '5vw',
-                    width: '90vw',
-                    height: '70vh',
-                    borderRadius: '4px',
-                    duration: 0.9,
+                    top: '3vh',
+                    left: '3vw',
+                    width: '94vw',
+                    height: '88vh',
+                    borderRadius: '12px',
+                    duration: 1,
                     ease: 'power3.inOut',
                     onComplete: () => {
                         dom.projectViewer.classList.add('is-active');
                         gsap.to(clone, {
                             opacity: 0,
                             duration: 0.3,
-                            onComplete: () => clone.remove()
+                            onComplete: () => clone.remove(),
                         });
                     }
                 });
 
-                // Slide away nav
                 gsap.to(dom.nav, {
                     y: -80,
                     opacity: 0,
@@ -637,15 +646,17 @@
                     ease: 'power2.in',
                 });
 
-                // Disable scroll
                 if (lenis) lenis.stop();
             });
         });
 
-        // Close project
         dom.projectClose.addEventListener('click', closeProject);
+
         dom.projectViewer.addEventListener('click', (e) => {
-            if (e.target === dom.projectViewer || e.target.classList.contains('project-viewer-bg')) {
+            if (
+                e.target === dom.projectViewer ||
+                e.target.classList.contains('project-viewer-bg')
+            ) {
                 closeProject();
             }
         });
@@ -663,7 +674,6 @@
         dom.projectViewer.classList.remove('is-active');
         state.isProjectOpen = false;
 
-        // Bring back nav
         gsap.to(dom.nav, {
             y: 0,
             opacity: 1,
@@ -672,26 +682,29 @@
             ease: 'power2.out',
         });
 
-        // Re-enable scroll
         if (lenis) lenis.start();
     }
 
     // ========================================
-    // 11. MAGNETIC CURSOR on gallery items
+    // 11. MAGNETIC HOVER
     // ========================================
+    // Change 4: disabled on mobile, reduced multiplier 0.1 → 0.05 for smoother feel
     function initMagneticCursor() {
+
+        // Disable on mobile
+        if (window.innerWidth < 768) return;
+
         dom.galleryItems.forEach(item => {
+
             item.addEventListener('mousemove', (e) => {
                 const rect = item.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                const deltaX = (e.clientX - centerX) * 0.1;
-                const deltaY = (e.clientY - centerY) * 0.1;
+                const x = (e.clientX - rect.left - rect.width / 2) * 0.05;
+                const y = (e.clientY - rect.top - rect.height / 2) * 0.05;
 
                 gsap.to(item.querySelector('.gallery-item-inner'), {
-                    x: deltaX,
-                    y: deltaY,
-                    duration: 0.6,
+                    x,
+                    y,
+                    duration: 0.5,
                     ease: 'power2.out',
                 });
             });
@@ -755,7 +768,6 @@
             }
         });
 
-        // Close menu when a link is tapped
         menu.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('is-active');
@@ -774,9 +786,7 @@
                 e.preventDefault();
                 const target = document.querySelector(anchor.getAttribute('href'));
                 if (target && lenis) {
-                    // Ensure lenis is running before scrolling
                     lenis.start();
-                    // Small delay to let menu close and lenis resume
                     setTimeout(() => {
                         lenis.scrollTo(target, { offset: -50, duration: 2 });
                     }, 100);
@@ -788,20 +798,25 @@
     // ========================================
     // INITIALIZATION
     // ========================================
+    // Change 5: reordered — critical path first, heavy desktop effects gated
     function init() {
-        initGrain();
-        initCursor();
-        initSpotlight();
         initSmoothScroll();
+        initPreloader();
         initScrollAnimations();
-        initScrollSkew();
         initGalleryHover();
         initProjectViewer();
-        initMagneticCursor();
         initHeroParallax();
         initAnchorScroll();
         initHamburger();
-        initPreloader();
+        initGrain();
+
+        // Heavy effects — desktop only
+        if (window.innerWidth > 768) {
+            initCursor();
+            initSpotlight();
+            initMagneticCursor();
+            initScrollSkew();
+        }
     }
 
     // Wait for DOM
