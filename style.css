@@ -44,6 +44,10 @@ body {
     font-family: var(--font-sans);
     overflow-x: hidden;
     cursor: none;
+    /* Change 7: smoother rendering */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -68,7 +72,8 @@ img {
     height: 100%;
     z-index: 10000;
     pointer-events: none;
-    opacity: 0.04;
+    /* Change 8: reduced from 0.04 to 0.02 — subtler, more cinematic */
+    opacity: 0.02;
     mix-blend-mode: overlay;
 }
 
@@ -276,7 +281,6 @@ img {
     line-height: 0.9;
     color: var(--white);
     position: relative;
-    /* mix-blend-mode: exclusion; */
 }
 
 .hero-letter {
@@ -313,6 +317,32 @@ img {
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: var(--gray-light);
+}
+
+/* =========================================
+   HERO BOTTOM TEXT
+   Change 3: new element below tagline
+========================================= */
+.hero-bottom-text {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    text-align: center;
+    font-family: var(--font-sans);
+}
+
+/* =========================================
+   HERO CREDIT
+   Change 4: optional credit line
+========================================= */
+.hero-credit {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
 }
 
 .hero-scroll-indicator {
@@ -462,13 +492,19 @@ img {
     overflow: hidden;
 }
 
+/* =========================================
+   PREMIUM CINEMATIC IMAGE HOVER
+   Change 2: slower easing, gentler scale
+========================================= */
 .gallery-img {
-    transition: transform 0.8s var(--ease-out-expo), filter 0.5s ease;
-    filter: grayscale(30%) brightness(0.85);
+    transition:
+        transform 1.4s cubic-bezier(.19, 1, .22, 1),
+        filter 0.8s ease;
+    filter: grayscale(25%) brightness(0.88);
 }
 
 .gallery-item:hover .gallery-img {
-    transform: scale(1.08);
+    transform: scale(1.05);
     filter: grayscale(0%) brightness(1);
 }
 
@@ -478,7 +514,7 @@ img {
     left: 0;
     width: 100%;
     padding: 2rem;
-    background: linear-gradient(transparent, rgba(10,10,11,0.9));
+    background: linear-gradient(transparent, rgba(10, 10, 11, 0.9));
     transform: translateY(10px);
     opacity: 0;
     transition: all 0.5s var(--ease-out-expo);
@@ -553,6 +589,22 @@ img {
 .gallery-grid.is-hovering .gallery-item:not(:hover) {
     opacity: 0.25;
     filter: blur(2px) grayscale(100%);
+}
+
+/* =========================================
+   SELECTIVE IMAGE POSITIONING
+   Change 6: cleaner than inline styles
+========================================= */
+.gallery-item[data-project="naalayak"] .gallery-img {
+    object-position: center top;
+}
+
+.gallery-item[data-project="virsa"] .gallery-img {
+    object-position: center top;
+}
+
+.gallery-item[data-project="smokescreen"] .gallery-img {
+    object-position: center top;
 }
 
 /* --- Achievements Section --- */
@@ -661,28 +713,6 @@ img {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gray);
-}
-
-@media (max-width: 1024px) {
-    .achievement-showcase {
-        gap: 3rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .achievements {
-        padding: 5rem 1.5rem;
-        min-height: auto;
-    }
-
-    .achievement-showcase {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-
-    .achievement-title {
-        font-size: 2rem;
-    }
 }
 
 /* --- About Section --- */
@@ -891,7 +921,12 @@ img {
     color: var(--gray-dark);
 }
 
-/* --- Project Viewer --- */
+/* =========================================
+   IMPROVED CINEMATIC PROJECT VIEWER
+   Change 1: full replacement with new sizing,
+   object-contain, cinematicBreath animation,
+   frosted glass close button, project-meta
+========================================= */
 .project-viewer {
     position: fixed;
     inset: 0;
@@ -899,21 +934,24 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
 }
 
 .project-viewer.is-active {
-    pointer-events: auto;
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
 }
 
 .project-viewer-bg {
     position: absolute;
     inset: 0;
-    background: rgba(10, 10, 11, 0.95);
+    background: rgba(0, 0, 0, 0.96);
     backdrop-filter: blur(20px);
     opacity: 0;
     transition: opacity 0.6s ease;
@@ -926,93 +964,131 @@ img {
 .project-viewer-content {
     position: relative;
     z-index: 2;
-    width: 90%;
-    max-width: 1200px;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    padding: 2rem;
+    animation: cinematicFade 0.8s ease;
 }
 
 .project-close {
     position: fixed;
     top: 2rem;
     right: 2rem;
-    background: none;
-    border: 1px solid var(--gray-dark);
-    color: var(--white);
-    width: 50px;
-    height: 50px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: none;
-    transition: border-color 0.3s ease, transform 0.3s ease;
-    opacity: 0;
-    transform: scale(0.8);
-}
-
-.project-viewer.is-active .project-close {
-    opacity: 1;
-    transform: scale(1);
-    transition-delay: 0.4s;
+    transition:
+        transform 0.4s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+    cursor: pointer;
 }
 
 .project-close:hover {
+    transform: rotate(90deg) scale(1.08);
     border-color: var(--accent);
-    transform: scale(1.1) rotate(90deg);
+    background: rgba(201, 169, 110, 0.1);
 }
 
 .project-image-full {
     width: 100%;
-    max-height: 70vh;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    border-radius: 4px;
     opacity: 0;
-    transform: scale(0.9) translateY(30px);
-    transition: all 0.8s var(--ease-out-expo);
+    transform: scale(0.95) translateY(20px);
+    transition:
+        opacity 0.8s ease,
+        transform 1s var(--ease-out-expo);
 }
 
 .project-viewer.is-active .project-image-full {
     opacity: 1;
     transform: scale(1) translateY(0);
-    transition-delay: 0.15s;
 }
 
 .project-image-full img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* object-contain so full image is always visible — no crops */
+    object-fit: contain;
+    object-position: center center;
+    border-radius: 12px;
+    animation: cinematicBreath 8s ease-in-out infinite;
+}
+
+@keyframes cinematicBreath {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.015); }
+    100% { transform: scale(1); }
 }
 
 .project-details {
     text-align: center;
-    margin-top: 2rem;
+    padding-top: 1.5rem;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.6s var(--ease-out-expo);
+    transition:
+        opacity 0.6s ease,
+        transform 0.8s ease;
 }
 
 .project-viewer.is-active .project-details {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.35s;
 }
 
 .project-title {
     font-family: var(--font-display);
-    font-size: 2.5rem;
-    letter-spacing: 0.1em;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: 0.08em;
     color: var(--white);
 }
 
 .project-category {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--gray-light);
-    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+}
+
+.project-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-family: var(--font-sans);
+}
+
+@keyframes cinematicFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* --- Preloader --- */
@@ -1060,12 +1136,9 @@ img {
     transition: width 0.3s ease;
 }
 
-/* --- Scroll-based Skew (applied via JS) --- */
-.gallery-item {
-    transition: opacity 0.5s ease, filter 0.5s ease;
-}
-
-/* --- Responsive --- */
+/* ============================================
+   RESPONSIVE — 1024px
+   ============================================ */
 @media (max-width: 1024px) {
     .gallery-grid {
         gap: 1.5rem;
@@ -1092,8 +1165,12 @@ img {
     }
 }
 
+/* ============================================
+   RESPONSIVE — 768px
+   ============================================ */
 @media (max-width: 768px) {
-    /* Nav */
+
+    /* --- Nav --- */
     .nav {
         padding: 1rem 1.25rem;
         mix-blend-mode: normal;
@@ -1138,7 +1215,7 @@ img {
         letter-spacing: 0.2em;
     }
 
-    /* Hero */
+    /* --- Hero --- */
     .hero-title {
         font-size: clamp(3.5rem, 16vw, 6rem);
     }
@@ -1157,7 +1234,7 @@ img {
         width: 30px;
     }
 
-    /* Statement */
+    /* --- Statement --- */
     .statement {
         padding: 4rem 1.5rem;
         min-height: 50vh;
@@ -1167,7 +1244,7 @@ img {
         font-size: clamp(1.3rem, 5vw, 1.8rem);
     }
 
-    /* Gallery */
+    /* --- Gallery --- */
     .gallery {
         padding: 4rem 0 3rem;
     }
@@ -1211,7 +1288,7 @@ img {
         font-size: 1.2rem;
     }
 
-    /* Achievements */
+    /* --- Achievements --- */
     .achievements {
         padding: 4rem 1.5rem;
         min-height: auto;
@@ -1242,7 +1319,7 @@ img {
         font-size: 0.65rem;
     }
 
-    /* About */
+    /* --- About --- */
     .about {
         padding: 4rem 1.5rem;
     }
@@ -1269,7 +1346,7 @@ img {
         font-size: 2rem;
     }
 
-    /* Contact */
+    /* --- Contact --- */
     .contact {
         padding: 4rem 1.5rem;
         min-height: auto;
@@ -1287,7 +1364,7 @@ img {
         gap: 1.5rem;
     }
 
-    /* Footer */
+    /* --- Footer --- */
     .footer {
         padding: 0 1.5rem;
         position: relative;
@@ -1295,7 +1372,7 @@ img {
         bottom: auto;
     }
 
-    /* Project Viewer */
+    /* --- Project Viewer --- */
     .project-viewer-content {
         width: 95%;
     }
@@ -1304,7 +1381,7 @@ img {
         font-size: 1.8rem;
     }
 
-    /* Cursor — disable on touch */
+    /* --- Cursor — disable on touch --- */
     .cursor {
         display: none;
     }
@@ -1315,4 +1392,32 @@ img {
 
     a { cursor: pointer; }
     .gallery-item { cursor: pointer; }
+
+    /* =========================================
+       Change 5: mobile performance additions
+    ========================================= */
+
+    /* Kill grain on mobile entirely */
+    #grain {
+        display: none;
+    }
+
+    .hero-bottom-text {
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+    }
+
+    .project-image-full {
+        height: 75vh;
+    }
+
+    .project-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    /* Prevent JS transforms from overriding mobile layout */
+    .gallery-item {
+        transform: none !important;
+    }
 }
